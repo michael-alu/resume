@@ -1,0 +1,21 @@
+{
+    "short_name": "Michael",
+    "name": "Michael Nwuju",
+    "description": "Prolific Software Engineer",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "alu-photo.jpeg",
+            "sizes": "2280x2560",
+            "type": "image/jpeg"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#1a6ff8"
+}
