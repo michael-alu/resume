@@ -88,6 +88,9 @@ header {
   color: var(--primary);
   font-size: 1.25rem;
   margin-bottom: 1rem;
+  height: 25px;
+  width: fit-content;
+  border-right: solid var(--primary) 4px;
 }
 
 .contact-links {
@@ -305,6 +308,10 @@ header:hover {
     padding: 0.5rem;
   }
 
+  .container {
+    margin-top: 5em;
+  }
+
   .profile-image {
     margin: 0 auto;
   }
@@ -328,5 +335,10 @@ header:hover {
     padding: 0.5rem;
     flex-direction: column;
     gap: 1em;
+  }
+
+  .title {
+    text-align: center;
+    margin: 0 auto 1rem auto;
   }
 }

@@ -69,6 +69,90 @@ if (profileImage) {
   });
 }
 
+// Targets the title
+const title = document.querySelector(".title");
+
+const titles = ["Software Engineer.", "Head of Engineering."];
+
+// Title Typewriter flow
+if (title) {
+  // Loop number for each word
+  let i = 0;
+
+  // Loop number for each letter in the current word
+  let j = 0;
+
+  // Boolean value responsible for controlling the typewriter speed
+  let isEnd = false;
+
+  // Current Title in place, which incremently adds each letter into the title
+  let currentTitle = [];
+
+  // Boolean value responsible for dictating when the word has been fully typed out and should be deleted.
+  let isDeleting = false;
+
+  const loopTitles = () => {
+    isEnd = false;
+
+    // Start with the first word
+    title.innerHTML = titles[0];
+
+    // This block of code handles the pushing of each letter in the current word
+    if (i < titles.length) {
+      if (!isDeleting && j <= titles[i].length) {
+        currentTitle.push(titles[i][j]);
+
+        j++;
+
+        title.innerHTML = currentTitle.join("");
+      }
+    }
+
+    // This block of code handles the deletion of the current title when the current title has been fully spelt out.
+    if (isDeleting && j <= titles[i].length) {
+      currentTitle.pop();
+
+      j--;
+
+      title.innerHTML = currentTitle.join("");
+    }
+
+    // This block of code starts the deleting process
+    if (j === titles[i].length) {
+      isEnd = true;
+
+      isDeleting = true;
+    }
+
+    // This block of code goes to the next word that should be typed out after successful deletion
+    if (isDeleting && j === 0) {
+      currentTitle = [];
+
+      isDeleting = false;
+
+      i++;
+
+      // When all words have been typed out, it starts the process again.
+      if (i === titles.length) {
+        i = 0;
+      }
+    }
+
+    // Fast speed
+    const fastSpeed = Math.random() * 100;
+
+    // Normal speed
+    const normalSpeed = Math.random() * 350;
+
+    const time = isEnd ? 2000 : isDeleting ? fastSpeed : normalSpeed;
+
+    // Give intervals based on different speeds, this is also a recursion.
+    setTimeout(loopTitles, time);
+  };
+
+  loopTitles();
+}
+
 // This is a list of Experiences
 const experiences = [
   {
@@ -173,7 +257,7 @@ if (experienceList) {
             ${experience.bullets.map(bullet => `<li>${bullet}</li>`).join("")}
             </ul>
             <div class="experience-links">
-              <a href="${experience.link}">View Company</a>
+              <a href="${experience.link}" target="_blank">View Company</a>
             </div>
           </div>
         </div>`
